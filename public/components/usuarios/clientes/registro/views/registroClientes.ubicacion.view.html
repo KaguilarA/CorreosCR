@@ -1,0 +1,12 @@
+<ng-map id="map" center="current-location" styles="width: 50%; height: 20em;">
+  <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
+</ng-map>
+
+<div class="form-group row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref="registroUsuarios.metodosDePago" class="btn btn-block btn-info">
+      Next Section
+      <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+  </div>
+</div>

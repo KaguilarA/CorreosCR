@@ -1,0 +1,56 @@
+<div class="form-row">
+
+  <div class="col">
+    <label for="txtNombre1">Primer nombre:</label>
+    <input type="text" class="form-control" id="txtNombre1" ng-model="vm.nuevoCliente.name" required>
+  </div>
+
+  <div class="col">
+    <label for="txtNombre2">Segundo nombre:</label>
+    <input type="text" class="form-control" id="txtNombre2" ng-model="vm.nuevoCliente.secondName">
+  </div>
+
+</div>
+
+<div class="form-row">
+
+  <div class="col">
+    <label for="txtApellido1">Primer apellido:</label>
+    <input type="text" class="form-control" id="txtApellido1" ng-model="vm.nuevoCliente.surname" required>
+  </div>
+
+  <div class="col">
+    <label for="txtApellido2">Segundo apellido:</label>
+    <input type="text" class="form-control" id="txtApellido2" ng-model="vm.nuevoCliente.secondSurname">
+  </div>
+
+</div>
+
+<div class="form-row">
+
+  <div class="col">
+    <label for="txtApellido1">Cédula:</label>
+    <input type="text" class="form-control" id="txtApellido1" ng-model="vm.nuevoCliente.surname" required>
+  </div>
+
+  <div class="col">
+    <label for="txtApellido2">Fecha de nacimiento:</label>
+    <input type="date" class="form-control" id="txtApellido2" ng-model="vm.nuevoCliente.secondSurname">
+  </div>
+
+</div>
+
+<div class="form-row">
+  <a ui-sref="landingPage" class="btn btn-danger mr-3">
+    <div class="d-inline">
+      <i class="fas fa-times"></i>
+    </div>
+    Cancelar
+  </a>
+  <a ui-sref="registroUsuarios.ubicacion" class="btn btn-success">
+    Siguiente
+    <div class="d-inline">
+      <i class="fas fa-chevron-circle-right"></i>
+    </div>
+  </a>
+</div>

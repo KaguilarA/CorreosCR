@@ -12,6 +12,7 @@ const gulp = require('gulp'),
         views : './public/components/**/**/*.html',
         styles: './public/sources/styles/**/*.scss',
         impSass : './public/sources/styles/style.scss',
+        principalJs : './public/*.js',
         js: './public/components/**/**/*.js',
         jsBackEnd: './api/**/**/**/*.js',
         excss: './public/*.css'
@@ -28,11 +29,15 @@ gulp.task('connect', () => {
   });
 });
 
-gulp.task('to-do', () => {
-  gulp.src(paths.js)
-  .pipe(todo())
-  .pipe(gulp.dest('./'));
+gulp.task('to-do', (cb) => {
+  gulp.src([paths.js, paths.jsBackEnd, paths.principalJs])
+  .pipe(todo({
+    verbose: true
+  }))
+  .pipe(gulp.dest('./'))
+  .on('end', cb);
 });
+
 
 gulp.task('dependencies', () => {
   gulp.src([
@@ -45,7 +50,9 @@ gulp.task('dependencies', () => {
     './node_modules/angular-password/angular-password.min.js',
     './node_modules/angular-scroll/angular-scroll.min.js',
     './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
-    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
+    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+    './node_modules/ngmap/build/scripts/ng-map.min.js',
+    './node_modules/angular-animate/angular-animate.min.js'
   ])
     .pipe(gulp.dest('./public/lib/angular/dependencies'));
 
@@ -71,7 +78,7 @@ gulp.task('dependencies', () => {
 });
 
 gulp.task('reload', () => {
-  gulp.src([paths.views, paths.styles, paths.js, paths.jsBackEnd])
+  gulp.src([paths.views, paths.styles, paths.js, paths.jsBackEnd, paths.principalJs])
     .pipe(connect.reload())
     .pipe(browserSync.stream());
 });
@@ -85,7 +92,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch([paths.views, paths.styles, paths.js], ['reload', 'to-do', 'styles'])
+  gulp.watch([paths.views, paths.styles, paths.js, paths.principalJs, paths.jsBackEnd], ['reload', 'to-do', 'styles'])
     .on('change', browserSync.reload);
 });
 
